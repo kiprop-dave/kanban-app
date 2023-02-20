@@ -21,6 +21,7 @@ const column = z.object({
 
 const board = z.object({
   name: z.string(),
+  id: z.string(),
   columns: z.array(column),
 });
 
