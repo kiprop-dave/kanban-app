@@ -7,6 +7,10 @@ interface AppContextProps {
   switchActiveBoard: (id: string) => void;
   createBoard: (board: Board) => void;
   deleteBoard: (id: string) => void;
+  toggleBoardModal: () => void;
+  toggleTaskModal: () => void;
+  taskModal: boolean;
+  boardModal: boolean;
 }
 
 type ChildrenProps = {
@@ -18,6 +22,8 @@ const AppContext = createContext<AppContextProps | null>(null);
 function AppProvider({ children }: ChildrenProps) {
   const [boards, setBoards] = useState<Board[]>([]);
   const [activeBoard, setActiveBoard] = useState<Board | null>(null);
+  const [boardModal, setBoardModal] = useState<boolean>(false);
+  const [taskModal, setTaskModal] = useState<boolean>(false);
 
   useEffect(() => {
     if (boards.length > 0) {
@@ -51,12 +57,24 @@ function AppProvider({ children }: ChildrenProps) {
     setBoards((boards) => boards.filter((board) => board.id !== id));
   };
 
+  const toggleBoardModal = () => {
+    setBoardModal((prev) => !prev);
+  };
+
+  const toggleTaskModal = () => {
+    setTaskModal((prev) => !prev);
+  };
+
   const values: AppContextProps = {
     boards,
     activeBoard,
     switchActiveBoard,
     createBoard,
     deleteBoard,
+    toggleBoardModal,
+    toggleTaskModal,
+    taskModal,
+    boardModal,
   };
 
   return <AppContext.Provider value={values}>{children}</AppContext.Provider>;
