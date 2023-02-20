@@ -1,0 +1,10 @@
+{
+    "apps":[
+        {
+            "name": "kanban-app",
+            "script": "npm",
+            "interpreter": "none",
+            "args": "run preview"
+        }
+    ]
+}
