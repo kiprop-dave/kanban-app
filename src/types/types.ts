@@ -26,3 +26,6 @@ const board = z.object({
 });
 
 export type Board = z.infer<typeof board>;
+export type Column = z.infer<typeof column>;
+export type Task = z.infer<typeof task>;
+export type SubTask = z.infer<typeof subTask>;
