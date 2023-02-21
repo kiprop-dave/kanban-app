@@ -51,6 +51,7 @@ function AppProvider({ children }: ChildrenProps) {
 
   const createBoard = (board: Board) => {
     setBoards((boards) => [...boards, board]);
+    setActiveBoard(board);
   };
 
   const deleteBoard = (id: string) => {

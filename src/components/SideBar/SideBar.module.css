@@ -27,14 +27,29 @@ li{
     padding-left: 2rem;
     display: flex;
     align-items: center;
-    height: 2rem;
+    height: 2.5rem;
     color:#828fa3;
+    cursor: pointer;
+    width: 90%;
+    border-radius: 0 1.2rem 1.2rem 0;
 }
 
 .boardName{
     all: unset;
     padding-left: 1rem;
-    font-weight: 500;
-    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-size: 14px;
     color:#828fa3;
+}
+
+
+.active{
+    background-color: #635FC7;
+    color: #ffff;
+    border-left: solid 3px #3f51b5;
+}
+
+.createBoard{
+   color: #635fc7;
 }

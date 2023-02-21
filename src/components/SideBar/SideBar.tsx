@@ -4,7 +4,8 @@ import BoardName from "./BoardName";
 import S from "./SideBar.module.css";
 
 const SideBar = () => {
-  const { boards, switchActiveBoard, toggleBoardModal } = useAppContext();
+  const { boards, switchActiveBoard, toggleBoardModal, activeBoard } =
+    useAppContext();
   const { theme1 } = useThemeContext();
 
   const boardElements = boards.map((board) => (
@@ -13,6 +14,7 @@ const SideBar = () => {
       name={board.name}
       switchActiveBoard={switchActiveBoard}
       id={board.id}
+      activeBoard={activeBoard?.id}
     />
   ));
 
@@ -21,9 +23,10 @@ const SideBar = () => {
       <nav className={theme1}>
         <h4 className={S.title}>ALL BOARDS ({boards.length})</h4>
         <ul className={S.boardList}>{boardElements}</ul>
-        <button onClick={() => toggleBoardModal()} className={S.createBoard}>
-          Create Board
-        </button>
+        <BoardName
+          name="+ Create New Board"
+          toggleBoardModal={toggleBoardModal}
+        />
       </nav>
     </>
   );
