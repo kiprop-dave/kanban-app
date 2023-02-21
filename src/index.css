@@ -18,6 +18,11 @@
   box-sizing: border-box;
 }
 
+button, input{
+  outline: none;
+  border: none;
+}
+
 .darkbg1{
   background-color: var(--dark-bg1);
   color:var(--dark-color1)

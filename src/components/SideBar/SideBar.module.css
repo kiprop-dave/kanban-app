@@ -1,0 +1,40 @@
+nav{
+    position: fixed;
+    left: 0;
+    top: 13vh;
+    width: 20%;
+    height: calc(100vh - 13vh);
+    display: flex;
+    flex-direction: column;
+    padding-top: 0.5rem;
+}
+
+li{
+    list-style: none;
+    margin-bottom: 0.5rem;
+}
+
+.title{
+    letter-spacing: 2px;
+    font-size: 12px;
+    margin-left: 2rem;
+    color:#828fa3;
+    padding-bottom: 0.5rem;
+}
+
+
+.board{
+    padding-left: 2rem;
+    display: flex;
+    align-items: center;
+    height: 2rem;
+    color:#828fa3;
+}
+
+.boardName{
+    all: unset;
+    padding-left: 1rem;
+    font-weight: 500;
+    font-size: 20px;
+    color:#828fa3;
+}

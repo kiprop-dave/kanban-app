@@ -3,6 +3,8 @@ import { createContext, useState, useEffect } from "react";
 interface ThemeContextProps {
   isLightTheme: boolean;
   toggleTheme: () => void;
+  theme1: string;
+  theme2: string;
 }
 
 type ChildrenProps = {
@@ -18,10 +20,18 @@ function ThemeProvider({ children }: ChildrenProps) {
     setIsLightTheme((prev) => !prev);
   };
 
+  const theme1 = isLightTheme ? "lightbg1" : "darkbg1";
+  const theme2 = isLightTheme ? "lightbg2" : "darkbg2";
+
+  const values: ThemeContextProps = {
+    isLightTheme,
+    toggleTheme,
+    theme1,
+    theme2,
+  };
+
   return (
-    <ThemeContext.Provider value={{ isLightTheme, toggleTheme }}>
-      {children}
-    </ThemeContext.Provider>
+    <ThemeContext.Provider value={values}>{children}</ThemeContext.Provider>
   );
 }
 

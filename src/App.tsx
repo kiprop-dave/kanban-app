@@ -9,6 +9,8 @@ function App() {
   return (
     <div className={S.app}>
       <Header />
+      <SideBar />
+      {boardModal && <BoardModal />}
     </div>
   );
 }

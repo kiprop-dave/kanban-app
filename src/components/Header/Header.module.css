@@ -3,23 +3,30 @@
     width: 100%;
     display: flex;
     align-items: center;
-    border: solid 1px yellow;
+    border-bottom: 1px solid #828fa3;
+    position: fixed;
+    top: 0;
 }
 
 .logo{
     height: 100%;
     width: 20%;
-    border: solid 1px yellow;
+    border-right: 1px solid #828fa3;
+    display: flex;
+    align-items: center;
+    padding-left: 2rem;
+}
+
+.appLogo{
+    margin-left: 1rem;
 }
 
 .boardTitleCont{
     height: 100%;
     width: 60%;
-    border: solid 1px yellow;
 }
 
 .buttons{
     height: 100%;
     width: 20%;
-    border: solid 1px yellow;
 }
