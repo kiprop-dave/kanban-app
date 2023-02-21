@@ -1,0 +1,25 @@
+.container{
+    height: 13vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border: solid 1px yellow;
+}
+
+.logo{
+    height: 100%;
+    width: 20%;
+    border: solid 1px yellow;
+}
+
+.boardTitleCont{
+    height: 100%;
+    width: 60%;
+    border: solid 1px yellow;
+}
+
+.buttons{
+    height: 100%;
+    width: 20%;
+    border: solid 1px yellow;
+}

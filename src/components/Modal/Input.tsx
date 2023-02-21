@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 interface InputProps {
   value: string;
   index: number;
@@ -7,8 +5,6 @@ interface InputProps {
 }
 
 function Input({ value, editValue, index }: InputProps) {
-  //   const [value, setValue] = useState<string>("");
-
   return (
     <input
       type="text"
