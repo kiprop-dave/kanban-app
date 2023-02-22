@@ -36,7 +36,6 @@ const BoardModal = () => {
       .filter((l) => l != "")
       .map((col) => ({ name: col, tasks: [] }));
     let board: Board = { ...newBoard, columns: colArr };
-    console.log("board: ", board);
     createBoard(board);
     toggleBoardModal();
     setNewBoard({ name: "", id: generateId(), columns: [] });
@@ -44,11 +43,11 @@ const BoardModal = () => {
   };
 
   return (
-    <div className={S.modal__container}>
-      <div className={S.modal__content}>
-        <div className={S.modal__header}>Create New Board</div>
-        <div className={S.modal__body}>
-          <label htmlFor="board-name">Board Name</label>
+    <div className={S.modalContainer}>
+      <div className={S.modalContent}>
+        <div className={S.modalHeader}>Create New Board</div>
+        <div className={S.modalBody}>
+          <label htmlFor="board-name">Name</label>
           <input
             id="board-name"
             type="text"

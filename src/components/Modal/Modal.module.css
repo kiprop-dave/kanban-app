@@ -1,4 +1,10 @@
-.modal__container{
+input{
+    /* background-color: inherit; */
+    border:solid 2px black;
+    outline: black;
+}
+
+.modalContainer{
     position: fixed;
     top: 0;
     left: 0;
@@ -11,6 +17,17 @@
     z-index: 2;
 }
 
-.modal__content{
+.modalContent{
+    width: 30%;
+    height: 50%;
+    padding: 1.5%;
+    display: flex;
+    flex-direction: column;
+    border: solid 1px red;
     z-index: 3;
+}
+
+.modalBody{
+    display: flex;
+    flex-direction: column;
 }

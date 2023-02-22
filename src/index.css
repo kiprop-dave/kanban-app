@@ -9,13 +9,14 @@
   --light-color1:#000000;
   --dark-bg2:#20212C;
   --dark-color2:#ffffff;
-  --light-bg2:#828fa3;
+  --light-bg2:#F4F7FD;;
 }
 
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
 }
 
 button, input{
