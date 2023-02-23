@@ -1,6 +1,7 @@
 import S from "./Kanban.module.css";
 import useAppContext from "../../hooks/useAppContext";
 import useThemeContext from "../../hooks/useThemeContext";
+import BoardColumn from "./Column";
 
 type KanbanProps = {
   showSideBar: boolean;
@@ -8,13 +9,27 @@ type KanbanProps = {
 
 const Kanban = ({ showSideBar }: KanbanProps): JSX.Element => {
   const { theme2 } = useThemeContext();
+  const { activeBoard } = useAppContext();
+
+  const columns = activeBoard?.columns.map((col, i) => (
+    <BoardColumn key={i} column={col} />
+  ));
 
   let toggleClass = !showSideBar ? S.hidden : "";
 
   return (
     <>
       <section className={`${S.container} ${theme2} ${toggleClass}`}>
-        Test
+        {activeBoard ? (
+          columns
+        ) : (
+          <div className={`${S.noBoard}`}>
+            <p className={`${S.noBoardText}`}>
+              You have no boards. Create a new board to get started.
+            </p>
+            <button className={`${S.newBoard}`}>+ Create New Board</button>
+          </div>
+        )}
       </section>
     </>
   );

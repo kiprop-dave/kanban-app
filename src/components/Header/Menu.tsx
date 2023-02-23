@@ -2,15 +2,16 @@ import S from "./Header.module.css";
 
 type MenuProps = {
   theme: string;
+  name: string;
 };
 
-const MenuPopUp = ({ theme }: MenuProps): JSX.Element => {
+const MenuPopUp = ({ theme, name }: MenuProps): JSX.Element => {
   return (
     <>
       <div className={`${S.menuContainer} ${theme}`}>
-        <button className={`${S.menuButtons} ${S.editBtn}`}>Edit Board</button>
+        <button className={`${S.menuButtons} ${S.editBtn}`}>Edit {name}</button>
         <button className={`${S.menuButtons} ${S.deleteBtn}`}>
-          Delete Board
+          Delete {name}
         </button>
       </div>
     </>

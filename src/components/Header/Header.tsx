@@ -35,7 +35,7 @@ function Header(): JSX.Element {
           </button>
         </div>
       )}
-      {isMenuOpen && <MenuPopUp theme={theme2} />}
+      {isMenuOpen && <MenuPopUp theme={theme2} name="Board" />}
     </header>
   );
 }
