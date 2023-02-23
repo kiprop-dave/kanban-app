@@ -9,7 +9,7 @@ type KanbanProps = {
 
 const Kanban = ({ showSideBar }: KanbanProps): JSX.Element => {
   const { theme2 } = useThemeContext();
-  const { activeBoard } = useAppContext();
+  const { activeBoard, openModal } = useAppContext();
 
   const columns = activeBoard?.columns.map((col, i) => (
     <BoardColumn key={i} column={col} />
@@ -27,7 +27,12 @@ const Kanban = ({ showSideBar }: KanbanProps): JSX.Element => {
             <p className={`${S.noBoardText}`}>
               You have no boards. Create a new board to get started.
             </p>
-            <button className={`${S.newBoard}`}>+ Create New Board</button>
+            <button
+              className={`${S.newBoard}`}
+              onClick={() => openModal("createBoard")}
+            >
+              + Create New Board
+            </button>
           </div>
         )}
       </section>

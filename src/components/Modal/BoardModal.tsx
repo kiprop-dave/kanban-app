@@ -46,15 +46,42 @@ const BoardModal = () => {
     setColumns([]);
   };
 
+  const deleteColumn = (index: number) => {
+    if (columns.length === 1) return;
+    setColumns((prev) => prev.filter((col, i) => i !== index));
+  };
+
   const columnInputs = columns.map((col, i) => (
-    <Input key={i} value={col} index={i} editValue={editColumn} />
+    <Input
+      key={i}
+      value={col}
+      index={i}
+      editValue={editColumn}
+      deleteColumn={deleteColumn}
+    />
   ));
+
+  const addColStyle = {
+    color: "#635FC7",
+    backgroundColor: "#ffffff",
+  };
+
+  const createBoardStyle = {
+    color: "#ffffff",
+    backgroundColor: "#635FC7",
+  };
 
   return (
     <>
-      <form onSubmit={(e) => createNewBoard(columns, e)}>
+      <form
+        onSubmit={(e) => createNewBoard(columns, e)}
+        className={`${S.newBoard}`}
+      >
         <h4 className={S.title}>Create New Board</h4>
-        <label htmlFor="board-name">Name</label>
+        <label htmlFor="board-name">
+          Name
+          <span className={S.error}>{err && errMsg}</span>
+        </label>
         <input
           id="board-name"
           type="text"
@@ -64,11 +91,14 @@ const BoardModal = () => {
             setNewBoard((prev) => ({ ...prev, name: e.target.value }));
           }}
         />
-        {err && <p className={S.modal__error}>{errMsg}</p>}
         <p>Columns</p>
-        <div className={S.modal__columns}>{columnInputs}</div>
-        <button onClick={() => addColumn()}>Add Column</button>
-        <button type="submit">Create Board</button>
+        <div className={S.columnsContainer}>{columnInputs}</div>
+        <button onClick={() => addColumn()} style={addColStyle} type="button">
+          + Add New Column
+        </button>
+        <button type="submit" style={createBoardStyle}>
+          Create Board
+        </button>
       </form>
     </>
   );

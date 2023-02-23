@@ -19,8 +19,7 @@
 }
 
 button, input{
-  outline: none;
-  border: none;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 .darkbg1{
