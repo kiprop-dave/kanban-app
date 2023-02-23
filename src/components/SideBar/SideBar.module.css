@@ -8,35 +8,37 @@ nav{
     flex-direction: column;
     padding-top: 0.5rem;
     border-right: solid 1px #3e3f4e;
+    transition: left 0.3s ease-in-out;
+    z-index: 5;
 }
 
 .slideOut{
-    animation: slideOut 0.3s ease;
+    left: -20%;
+    animation: slideOut 0.3s ease-in-out forwards;
 }
 
 .slideIn{
-    animation: slideIn 0.3s ease;
+    left: 0;
+    animation: slideIn 0.3s ease-in-out forwards;
 }
 
 @keyframes slideIn {
     from {
-      transform: translate3d(-100%, 0, 0);
-      visibility: visible;
+      left: -20%;
     }
   
     to {
-      transform: translate3d(0, 0, 0);
+      left: 0;
     }
 }
 
 @keyframes slideOut {
     from {
-      transform: translate3d(0, 0, 0);
+      left: 0;
     }
   
     to {
-      transform: translate3d(100%, 0, 0);
-      visibility: hidden;
+      left: -20%;
     }
 }
 

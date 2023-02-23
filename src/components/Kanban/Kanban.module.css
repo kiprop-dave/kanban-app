@@ -1,0 +1,12 @@
+.container{
+    margin-top: 13vh;
+    margin-left: 20%;
+    display: flex;
+    min-height: calc(100vh - 13vh);
+    min-width: auto;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+.hidden{
+    margin-left: 0;
+}
