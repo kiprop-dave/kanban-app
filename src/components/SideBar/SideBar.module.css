@@ -118,6 +118,7 @@ li{
     margin: 0 1rem;
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .toggleButton__slider{
@@ -128,12 +129,37 @@ li{
     border-radius: 50%;
     background-color: #fff;
     cursor: pointer;
-    transition: margin 0.2s ease;
+    position: absolute;
+    left: 0;
+    transition: left 0.2s ease;
 }
 
 .right{
-    margin-left: auto;
-    transition: margin-left 0.2s ease;
+    left: 51%;
+    transition: left 0.2s ease;
+}
+
+.left{
+    left: 0;
+    transition: left 0.2s ease;
+}
+
+@keyframes slideLeft{
+    0%{
+        left:0;
+    }
+    100%{
+        left:51%;
+    }
+}
+
+@keyframes slideRight{
+    0%{
+        left:51%;
+    }
+    100%{
+        left:0;
+    }
 }
 
 .sidebarToggle{

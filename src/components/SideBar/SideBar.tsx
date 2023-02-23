@@ -16,7 +16,7 @@ const SideBar = ({ showSideBar, openSideBar, closeSideBar }: SideBarProps) => {
     useAppContext();
   const { theme1, theme2, isLightTheme, toggleTheme } = useThemeContext();
 
-  let toggleClass = isLightTheme ? S.right : "";
+  let toggleClass = isLightTheme ? S.right : S.left;
   let slideTransition = showSideBar ? S.slideIn : S.slideOut;
 
   const boardElements = boards.map((board) => (
