@@ -6,7 +6,7 @@ import S from "./Modal.module.css";
 import Input from "./Input";
 
 const BoardModal = () => {
-  const { toggleBoardModal, createBoard } = useAppContext();
+  const { closeModal, createBoard } = useAppContext();
   const [newBoard, setNewBoard] = useState<Board>({
     name: "",
     id: generateId(),
@@ -26,54 +26,51 @@ const BoardModal = () => {
     );
   };
 
-  const createNewBoard = (cols: string[]) => {
+  const createNewBoard = (
+    cols: string[],
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
+    e.preventDefault();
     if (newBoard.name === "") {
       setErr(true);
-      setErrMsg("Required");
+      setErrMsg("Name Required");
       return;
     }
     let colArr: Column[] = cols
       .filter((l) => l != "")
-      .map((col) => ({ name: col, tasks: [] }));
+      .map((col) => ({ name: col.toUpperCase(), tasks: [] }));
     let board: Board = { ...newBoard, columns: colArr };
     createBoard(board);
-    toggleBoardModal();
+    closeModal();
     setNewBoard({ name: "", id: generateId(), columns: [] });
     setColumns([]);
   };
 
+  const columnInputs = columns.map((col, i) => (
+    <Input key={i} value={col} index={i} editValue={editColumn} />
+  ));
+
   return (
-    <div className={S.modalContainer}>
-      <div className={S.modalContent}>
-        <div className={S.modalHeader}>Create New Board</div>
-        <div className={S.modalBody}>
-          <label htmlFor="board-name">Name</label>
-          <input
-            id="board-name"
-            type="text"
-            value={newBoard.name}
-            onChange={(e) => {
-              setErrMsg("");
-              setNewBoard((prev) => ({ ...prev, name: e.target.value }));
-            }}
-          />
-          {err && <p className={S.modal__error}>{errMsg}</p>}
-          <p>Columns</p>
-          <div className={S.modal__columns}>
-            {columns.map((column, index) => (
-              <Input
-                key={index}
-                value={column}
-                index={index}
-                editValue={editColumn}
-              />
-            ))}
-          </div>
-          <button onClick={() => addColumn()}>Add Column</button>
-          <button onClick={() => createNewBoard(columns)}>Create Board</button>
-        </div>
-      </div>
-    </div>
+    <>
+      <form onSubmit={(e) => createNewBoard(columns, e)}>
+        <h4 className={S.title}>Create New Board</h4>
+        <label htmlFor="board-name">Name</label>
+        <input
+          id="board-name"
+          type="text"
+          value={newBoard.name}
+          onChange={(e) => {
+            setErrMsg("");
+            setNewBoard((prev) => ({ ...prev, name: e.target.value }));
+          }}
+        />
+        {err && <p className={S.modal__error}>{errMsg}</p>}
+        <p>Columns</p>
+        <div className={S.modal__columns}>{columnInputs}</div>
+        <button onClick={() => addColumn()}>Add Column</button>
+        <button type="submit">Create Board</button>
+      </form>
+    </>
   );
 };
 

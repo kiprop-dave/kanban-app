@@ -1,10 +1,10 @@
 input{
-    /* background-color: inherit; */
+    all:unset;
     border:solid 2px black;
     outline: black;
 }
 
-.modalContainer{
+.modalWrapper{
     position: fixed;
     top: 0;
     left: 0;
@@ -14,7 +14,7 @@ input{
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 2;
+    z-index: 6;
 }
 
 .modalContent{

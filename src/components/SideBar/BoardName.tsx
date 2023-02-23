@@ -1,11 +1,12 @@
 import S from "./SideBar.module.css";
 import useThemeContext from "../../hooks/useThemeContext";
+import { ActiveModal } from "../../types/types";
 
 type BoardNameProps = {
   id?: string;
   name: string;
   switchActiveBoard?: (id: string) => void;
-  toggleBoardModal?: () => void;
+  openModal?: (modal: ActiveModal) => void;
   activeBoard?: string;
 };
 
@@ -13,19 +14,19 @@ const BoardName = ({
   id,
   name,
   switchActiveBoard,
-  toggleBoardModal,
+  openModal,
   activeBoard,
 }: BoardNameProps): JSX.Element => {
   const { theme1 } = useThemeContext();
 
   const activeClass = id && id === activeBoard ? S.active : "";
-  const uniqueClass = toggleBoardModal ? S.createBoard : "";
+  const uniqueClass = openModal ? S.createBoard : "";
 
   const handleClick = () => {
     if (switchActiveBoard && id) {
       switchActiveBoard(id);
-    } else if (toggleBoardModal) {
-      toggleBoardModal();
+    } else if (openModal) {
+      openModal("createBoard");
     }
   };
 

@@ -12,8 +12,7 @@ type SideBarProps = {
 };
 
 const SideBar = ({ showSideBar, openSideBar, closeSideBar }: SideBarProps) => {
-  const { boards, switchActiveBoard, toggleBoardModal, activeBoard } =
-    useAppContext();
+  const { boards, switchActiveBoard, openModal, activeBoard } = useAppContext();
   const { theme1, theme2, isLightTheme, toggleTheme } = useThemeContext();
 
   let toggleClass = isLightTheme ? S.right : S.left;
@@ -34,10 +33,7 @@ const SideBar = ({ showSideBar, openSideBar, closeSideBar }: SideBarProps) => {
       <nav className={`${theme1} ${slideTransition}`}>
         <h4 className={S.title}>ALL BOARDS ({boards.length})</h4>
         <ul className={S.boardList}>{boardElements}</ul>
-        <BoardName
-          name="+ Create New Board"
-          toggleBoardModal={toggleBoardModal}
-        />
+        <BoardName name="+ Create New Board" openModal={openModal} />
         <div className={`${S.controlsContainer}`}>
           <div className={`${theme2} ${S.toggleContainer}`}>
             <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">

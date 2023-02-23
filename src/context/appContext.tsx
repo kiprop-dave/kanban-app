@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-import { Board } from "../types/types";
+import { Board, ActiveModal } from "../types/types";
 
 interface AppContextProps {
   boards: Board[];
@@ -7,10 +7,10 @@ interface AppContextProps {
   switchActiveBoard: (id: string) => void;
   createBoard: (board: Board) => void;
   deleteBoard: (id: string) => void;
-  toggleBoardModal: () => void;
-  toggleTaskModal: () => void;
-  taskModal: boolean;
-  boardModal: boolean;
+  openModal: (modal: ActiveModal) => void;
+  closeModal: () => void;
+  modal: boolean;
+  activeModal: ActiveModal;
 }
 
 type ChildrenProps = {
@@ -22,8 +22,8 @@ const AppContext = createContext<AppContextProps | null>(null);
 function AppProvider({ children }: ChildrenProps) {
   const [boards, setBoards] = useState<Board[]>([]);
   const [activeBoard, setActiveBoard] = useState<Board | null>(null);
-  const [boardModal, setBoardModal] = useState<boolean>(false);
-  const [taskModal, setTaskModal] = useState<boolean>(false);
+  const [modal, setModal] = useState<boolean>(false);
+  const [activeModal, setActiveModal] = useState<ActiveModal>("none");
 
   useEffect(() => {
     if (boards.length > 0) {
@@ -58,12 +58,14 @@ function AppProvider({ children }: ChildrenProps) {
     setBoards((boards) => boards.filter((board) => board.id !== id));
   };
 
-  const toggleBoardModal = () => {
-    setBoardModal((prev) => !prev);
+  const openModal = (modal: ActiveModal) => {
+    setActiveModal(modal);
+    setModal(true);
   };
 
-  const toggleTaskModal = () => {
-    setTaskModal((prev) => !prev);
+  const closeModal = () => {
+    setActiveModal("none");
+    setModal(false);
   };
 
   const values: AppContextProps = {
@@ -72,10 +74,10 @@ function AppProvider({ children }: ChildrenProps) {
     switchActiveBoard,
     createBoard,
     deleteBoard,
-    toggleBoardModal,
-    toggleTaskModal,
-    taskModal,
-    boardModal,
+    openModal,
+    closeModal,
+    modal,
+    activeModal,
   };
 
   return <AppContext.Provider value={values}>{children}</AppContext.Provider>;

@@ -25,7 +25,18 @@ const board = z.object({
   columns: z.array(column),
 });
 
+type activeModal =
+  | "createBoard"
+  | "createColumn"
+  | "createTask"
+  | "editTask"
+  | "editBoard"
+  | "deleteBoard"
+  | "deleteTask"
+  | "none";
+
 export type Board = z.infer<typeof board>;
 export type Column = z.infer<typeof column>;
 export type Task = z.infer<typeof task>;
 export type SubTask = z.infer<typeof subTask>;
+export type ActiveModal = activeModal;
