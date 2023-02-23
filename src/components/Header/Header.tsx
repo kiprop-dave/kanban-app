@@ -2,11 +2,12 @@ import { useState } from "react";
 import S from "./Header.module.css";
 import useThemeContext from "../../hooks/useThemeContext";
 import useAppContext from "../../hooks/useAppContext";
+import MenuPopUp from "./Menu";
 
 type HeaderProps = {};
 
 function Header(): JSX.Element {
-  const { theme1 } = useThemeContext();
+  const { theme1, theme2 } = useThemeContext();
   const { activeBoard } = useAppContext();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -34,6 +35,7 @@ function Header(): JSX.Element {
           </button>
         </div>
       )}
+      {isMenuOpen && <MenuPopUp theme={theme2} />}
     </header>
   );
 }
