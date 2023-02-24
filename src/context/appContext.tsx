@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-import { Board, ActiveModal } from "../types/types";
+import { Board, ActiveModal, Task } from "../types/types";
 
 interface AppContextProps {
   boards: Board[];
@@ -11,6 +11,7 @@ interface AppContextProps {
   closeModal: () => void;
   modal: boolean;
   activeModal: ActiveModal;
+  createTask: (task: Task, boardId: string, colId: string) => void;
 }
 
 type ChildrenProps = {
@@ -58,6 +59,23 @@ function AppProvider({ children }: ChildrenProps) {
     setBoards((boards) => boards.filter((board) => board.id !== id));
   };
 
+  const createTask = (task: Task, boardId: string, colId: string) => {
+    let newBoards = boards.map((board) => {
+      if (board.id === boardId) {
+        let newColumns = board.columns.map((col) => {
+          if (col.id === colId) {
+            return { ...col, tasks: [...col.tasks, task] };
+          }
+          return col;
+        });
+        return { ...board, columns: newColumns };
+      }
+      return board;
+    });
+    setBoards(newBoards);
+    setActiveBoard(newBoards.find((board) => board.id === boardId) as Board);
+  };
+
   const openModal = (modal: ActiveModal) => {
     setActiveModal(modal);
     setModal(true);
@@ -78,6 +96,7 @@ function AppProvider({ children }: ChildrenProps) {
     closeModal,
     modal,
     activeModal,
+    createTask,
   };
 
   return <AppContext.Provider value={values}>{children}</AppContext.Provider>;

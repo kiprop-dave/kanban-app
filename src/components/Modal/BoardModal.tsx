@@ -4,6 +4,7 @@ import { Board, Column } from "../../types/types";
 import generateId from "../../utils/generateId";
 import S from "./Modal.module.css";
 import Input from "./Input";
+import ModalButton from "./ModalButton";
 
 const BoardModal = () => {
   const { closeModal, createBoard } = useAppContext();
@@ -28,7 +29,7 @@ const BoardModal = () => {
 
   const createNewBoard = (
     cols: string[],
-    e: React.FormEvent<HTMLFormElement>
+    e: React.FormEvent<HTMLFormElement> | React.SyntheticEvent
   ) => {
     e.preventDefault();
     if (newBoard.name === "") {
@@ -38,7 +39,7 @@ const BoardModal = () => {
     }
     let colArr: Column[] = cols
       .filter((l) => l != "")
-      .map((col) => ({ name: col.toUpperCase(), tasks: [] }));
+      .map((col) => ({ name: col.toUpperCase(), tasks: [], id: generateId() }));
     let board: Board = { ...newBoard, columns: colArr };
     createBoard(board);
     closeModal();
@@ -57,7 +58,7 @@ const BoardModal = () => {
       value={col}
       index={i}
       editValue={editColumn}
-      deleteColumn={deleteColumn}
+      deleteElem={deleteColumn}
     />
   ));
 
@@ -91,14 +92,26 @@ const BoardModal = () => {
             setNewBoard((prev) => ({ ...prev, name: e.target.value }));
           }}
         />
-        <p>Columns</p>
+        <label htmlFor="test">columns</label>
         <div className={S.columnsContainer}>{columnInputs}</div>
-        <button onClick={() => addColumn()} style={addColStyle} type="button">
+        <ModalButton
+          text="+ Add New Column"
+          action={() => addColumn()}
+          type="button"
+          actionType="add"
+        />
+        <ModalButton
+          text="Create Board"
+          type="submit"
+          action={(e) => createNewBoard(columns, e)}
+          actionType="create"
+        />
+        {/* <button onClick={() => addColumn()} style={addColStyle} type="button">
           + Add New Column
         </button>
         <button type="submit" style={createBoardStyle}>
           Create Board
-        </button>
+        </button> */}
       </form>
     </>
   );

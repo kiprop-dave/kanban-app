@@ -15,6 +15,7 @@ const task = z.object({
 });
 
 const column = z.object({
+  id: z.string(),
   name: z.string(),
   tasks: z.array(task),
 });
@@ -40,3 +41,4 @@ export type Column = z.infer<typeof column>;
 export type Task = z.infer<typeof task>;
 export type SubTask = z.infer<typeof subTask>;
 export type ActiveModal = activeModal;
+export type SelectColumn = Omit<Column, "tasks">;

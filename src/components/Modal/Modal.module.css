@@ -1,4 +1,4 @@
-input{
+input,textarea{
     all: unset;
     border-radius: 5px;
     border-style: none;
@@ -6,6 +6,7 @@ input{
     background-color: inherit;
     margin: 0.5rem 0;
     height: 2rem;
+    padding: 0 0.5rem;
 }
 
 form{
@@ -16,13 +17,19 @@ form{
 button{
     all: unset;
     border-radius: 15px;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 600;
     text-align: center;
-    color: #ffff;
+    letter-spacing: 1px;
     height: 2rem;
     cursor: pointer;
     margin: 0.5rem 0;
+}
+
+label{
+    font-size: 14px;
+    font-weight: 600;
+    color: #828fa3;
 }
 
 .columnsContainer{
@@ -62,8 +69,12 @@ button{
     justify-content: space-between;
 }
 .inputWrapper > input{
-    min-width: 90%;
+    min-width: 88%;
 }
 .inputWrapper > svg{
     cursor: pointer;
+}
+
+.description{
+    height: 4rem;
 }

@@ -5,10 +5,10 @@ interface InputProps {
   value: string;
   index: number;
   editValue: (i: number, v: string) => void;
-  deleteColumn: (i: number) => void;
+  deleteElem: (i: number) => void;
 }
 
-function Input({ value, editValue, index, deleteColumn }: InputProps) {
+function Input({ value, editValue, index, deleteElem }: InputProps) {
   return (
     <div className={S.inputWrapper}>
       <input
@@ -16,7 +16,7 @@ function Input({ value, editValue, index, deleteColumn }: InputProps) {
         value={value}
         onChange={(e) => editValue(index, e.target.value)}
       />
-      <CrossSvg action={deleteColumn} index={index} />
+      <CrossSvg action={deleteElem} index={index} />
     </div>
   );
 }

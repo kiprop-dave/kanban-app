@@ -8,7 +8,7 @@ type HeaderProps = {};
 
 function Header(): JSX.Element {
   const { theme1, theme2 } = useThemeContext();
-  const { activeBoard } = useAppContext();
+  const { activeBoard, openModal } = useAppContext();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -24,7 +24,9 @@ function Header(): JSX.Element {
       </div>
       {activeBoard && (
         <div className={S.buttonsContainer}>
-          <button className={S.newTask}>+ Add New Task</button>
+          <button className={S.newTask} onClick={() => openModal("createTask")}>
+            + Add New Task
+          </button>
           <button
             className={S.menuBtn}
             onClick={() => setIsMenuOpen(!isMenuOpen)}

@@ -2,6 +2,7 @@ import S from "./Modal.module.css";
 import useAppContext from "../../hooks/useAppContext";
 import useThemeContext from "../../hooks/useThemeContext";
 import BoardModal from "./BoardModal";
+import TaskModal from "./TaskModal";
 
 const ModalWrapper = (): JSX.Element => {
   const { activeModal, closeModal } = useAppContext();
@@ -20,6 +21,9 @@ const ModalWrapper = (): JSX.Element => {
   switch (activeModal) {
     case "createBoard":
       modalRendered = <BoardModal />;
+      break;
+    case "createTask":
+      modalRendered = <TaskModal />;
       break;
     default:
       modalRendered = <></>;
