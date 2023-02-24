@@ -39,7 +39,7 @@ const BoardModal = () => {
     }
     let colArr: Column[] = cols
       .filter((l) => l != "")
-      .map((col) => ({ name: col.toUpperCase(), tasks: [], id: generateId() }));
+      .map((col) => ({ name: col, tasks: [], id: generateId() }));
     let board: Board = { ...newBoard, columns: colArr };
     createBoard(board);
     closeModal();

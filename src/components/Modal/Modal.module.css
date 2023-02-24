@@ -6,7 +6,8 @@ input,textarea{
     background-color: inherit;
     margin: 0.5rem 0;
     height: 2rem;
-    padding: 0 0.5rem;
+    padding: 0.2rem 0.5rem;
+    font-size: 12px;
 }
 
 form{
@@ -77,4 +78,37 @@ label{
 
 .description{
     height: 4rem;
+}
+
+.select{
+    border-radius: 5px;
+    border-style: none;
+    outline: solid 2px #828fa3;
+    background-color: inherit;
+    margin: 0.5rem 0;
+    height: 2rem;
+    padding: 0 0.5rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.dropContainer{
+    position: relative;
+}
+
+.dropItem{
+    cursor: pointer;
+    font-size: 12px;
+    margin: 0.2rem 0;
+}
+
+.selectDropdown{
+    border-radius: 5px;
+    list-style: none;
+    position: absolute;
+    bottom: calc(-width);
+    width: 100%;
+    padding: 0.5rem;
 }

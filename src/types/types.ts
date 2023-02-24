@@ -34,6 +34,7 @@ type activeModal =
   | "editBoard"
   | "deleteBoard"
   | "deleteTask"
+  | "viewTask"
   | "none";
 
 export type Board = z.infer<typeof board>;
