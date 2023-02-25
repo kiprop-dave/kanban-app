@@ -3,6 +3,7 @@ import useAppContext from "../../hooks/useAppContext";
 import useThemeContext from "../../hooks/useThemeContext";
 import BoardModal from "./BoardModal";
 import TaskModal from "./TaskModal";
+import DeleteModal from "./DeleteModal";
 
 const ModalWrapper = (): JSX.Element => {
   const { activeModal, closeModal } = useAppContext();
@@ -24,6 +25,9 @@ const ModalWrapper = (): JSX.Element => {
       break;
     case "createTask":
       modalRendered = <TaskModal />;
+      break;
+    case "deleteBoard":
+      modalRendered = <DeleteModal target="board" />;
       break;
     default:
       modalRendered = <></>;

@@ -43,11 +43,12 @@
     width: 60%;
     cursor: pointer;
     border-radius: 20px;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 600;
     background-color: #635FC7;
     text-align: center;
     color: #ffff;
+    padding: 0 5px;
 }
 .newTask:hover{
     opacity: 0.8;
@@ -81,7 +82,7 @@
     top:11vh;
     right: 2.5rem;
     border-radius: 5px;
-    box-shadow: 1px 1px #3e3f4e;
+    box-shadow: 0 0 8px #364e7e1a;
     display: flex;
     flex-direction: column;
     padding: 0.5rem 1.5rem 0.5rem 1.5rem;

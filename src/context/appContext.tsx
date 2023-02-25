@@ -12,6 +12,9 @@ interface AppContextProps {
   modal: boolean;
   activeModal: ActiveModal;
   createTask: (task: Task, boardId: string, colId: string) => void;
+  activeTask: Task | null;
+  selectActiveTask: (colId: string, taskId: string) => void;
+  deleteTask: () => void;
 }
 
 type ChildrenProps = {
@@ -25,6 +28,7 @@ function AppProvider({ children }: ChildrenProps) {
   const [activeBoard, setActiveBoard] = useState<Board | null>(null);
   const [modal, setModal] = useState<boolean>(false);
   const [activeModal, setActiveModal] = useState<ActiveModal>("none");
+  const [activeTask, setActiveTask] = useState<Task | null>(null);
 
   useEffect(() => {
     if (boards.length > 0) {
@@ -57,6 +61,8 @@ function AppProvider({ children }: ChildrenProps) {
 
   const deleteBoard = (id: string) => {
     setBoards((boards) => boards.filter((board) => board.id !== id));
+    let newActiveBoard = boards.find((board) => board.id !== id) || null;
+    setActiveBoard(newActiveBoard);
   };
 
   const createTask = (task: Task, boardId: string, colId: string) => {
@@ -86,6 +92,40 @@ function AppProvider({ children }: ChildrenProps) {
     setModal(false);
   };
 
+  const selectActiveTask = (colId: string, taskId: string) => {
+    const task = activeBoard?.columns
+      .find((col) => col.id === colId)
+      ?.tasks.find((task) => task.id === taskId);
+    if (task) {
+      setActiveTask(task);
+    }
+  };
+
+  const deleteTask = () => {
+    if (activeBoard && activeTask) {
+      let newBoards = boards.map((board) => {
+        if (board.id === activeBoard.id) {
+          let newColumns = board.columns.map((col) => {
+            if (col.name === activeTask.column) {
+              return {
+                ...col,
+                tasks: col.tasks.filter((task) => task.id !== activeTask.id),
+              };
+            }
+            return col;
+          });
+          return { ...board, columns: newColumns };
+        }
+        return board;
+      });
+      setBoards(newBoards);
+      setActiveBoard(
+        newBoards.find((board) => board.id === activeBoard.id) as Board
+      );
+      setActiveTask(null);
+    }
+  };
+
   const values: AppContextProps = {
     boards,
     activeBoard,
@@ -97,6 +137,9 @@ function AppProvider({ children }: ChildrenProps) {
     modal,
     activeModal,
     createTask,
+    activeTask,
+    selectActiveTask,
+    deleteTask,
   };
 
   return <AppContext.Provider value={values}>{children}</AppContext.Provider>;

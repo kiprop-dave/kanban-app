@@ -112,3 +112,26 @@ label{
     width: 100%;
     padding: 0.5rem;
 }
+
+/* Delete Modal Style */
+.deleteTitle{
+    font-size: 16px;
+    font-weight: 600;
+    color: #ea5555;
+    margin: 0.5rem 0;
+}
+
+.deleteText{
+    font-size: 12px;
+    color: #828fa3;
+    margin: 0.5rem 0;
+}
+
+.buttonsContainer{
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5rem 0;
+}
+.buttonsContainer > button{
+    width: 47%;
+}

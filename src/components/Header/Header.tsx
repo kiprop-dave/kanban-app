@@ -11,6 +11,14 @@ function Header(): JSX.Element {
   const { activeBoard, openModal } = useAppContext();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const openDeleteModal = () => {
+    openModal("deleteBoard");
+  };
+
+  const openEditBoardModal = () => {
+    openModal("editBoard");
+  };
+
   return (
     <header className={`${S.container} ${theme1}`}>
       <div className={S.logo}>
@@ -37,7 +45,14 @@ function Header(): JSX.Element {
           </button>
         </div>
       )}
-      {isMenuOpen && <MenuPopUp theme={theme2} name="Board" />}
+      {isMenuOpen && (
+        <MenuPopUp
+          theme={theme2}
+          name="Board"
+          editModal={openEditBoardModal}
+          deleteModal={openDeleteModal}
+        />
+      )}
     </header>
   );
 }

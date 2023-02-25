@@ -14,7 +14,7 @@ const BoardColumn = ({ column }: ColumnProps): JSX.Element => {
       <div className={`${S.columnContainer}`}>
         <div className={`${S.columnHeader}`}>
           <span className={`${S.icon}`}></span>
-          <h3 className={`${S.columnTitle}`}>{name}</h3>
+          <h3 className={`${S.columnTitle}`}>{name.toUpperCase()}</h3>
         </div>
       </div>
     </>

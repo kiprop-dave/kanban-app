@@ -106,12 +106,6 @@ const BoardModal = () => {
           action={(e) => createNewBoard(columns, e)}
           actionType="create"
         />
-        {/* <button onClick={() => addColumn()} style={addColStyle} type="button">
-          + Add New Column
-        </button>
-        <button type="submit" style={createBoardStyle}>
-          Create Board
-        </button> */}
       </form>
     </>
   );
