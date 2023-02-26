@@ -37,23 +37,66 @@
     margin-top: 0.5rem;
 }
 
+
+/* Styling for tasks area */
 .columnContainer{
     display: flex;
     flex-direction: column;
     gap: 1rem;
     border-radius: 0.5rem;
-    padding: 1rem;
+    padding: 0.5rem;
 }
 
 .columnHeader{
     display: flex;
     align-items: center;
-    border: solid 1px red;
+}
+
+.icon{
+    display: block;
+    height: 1rem;
+    width: 1rem;
+    border-radius: 50%;
+    margin-right: 0.8rem;
 }
 
 .columnTitle{
     font-weight: 600;
     letter-spacing: 1px;
+    font-size: 12px;
+    color:#828fa3;
+    letter-spacing: 0.2rem;
+}
+
+.tasksContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 15.5rem;
+    border-radius: 6px;
+    min-height: 92%;
+}
+
+.col__empty{
+    border: 2px dashed #828fa3;
+}
+
+.task{
+   padding: 1rem 0.5rem;
+   min-height: 5.5rem;
+   border: 1px solid rgba(134,134,134,.1);
+    border-radius: 6px;
+    box-shadow: 0 4px 6px #364e7e1a;
+    cursor: grab;
+}
+
+.taskTitle{
     font-size: 14px;
-    color:#828fa3;;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.par{
+    font-size: 12px;
+    font-weight: 600;
 }

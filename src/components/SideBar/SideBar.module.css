@@ -135,31 +135,13 @@ li{
 }
 
 .right{
-    left: 51%;
+    left: 53%;
     transition: left 0.2s ease;
 }
 
 .left{
-    left: 0;
+    left: 2.5%;
     transition: left 0.2s ease;
-}
-
-@keyframes slideLeft{
-    0%{
-        left:0;
-    }
-    100%{
-        left:51%;
-    }
-}
-
-@keyframes slideRight{
-    0%{
-        left:51%;
-    }
-    100%{
-        left:0;
-    }
 }
 
 .sidebarToggle{
