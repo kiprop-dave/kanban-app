@@ -4,6 +4,7 @@ import useThemeContext from "../../hooks/useThemeContext";
 import CreateBoard from "./CreateBoard";
 import CreateTask from "./CreateTask";
 import DeleteModal from "./DeleteModal";
+import EditBoard from "./EditBoard";
 
 const ModalWrapper = (): JSX.Element => {
   const { activeModal, closeModal } = useAppContext();
@@ -28,6 +29,9 @@ const ModalWrapper = (): JSX.Element => {
       break;
     case "deleteBoard":
       modalRendered = <DeleteModal target="board" />;
+      break;
+    case "editBoard":
+      modalRendered = <EditBoard />;
       break;
     default:
       modalRendered = <></>;

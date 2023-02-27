@@ -7,6 +7,7 @@ interface AppContextProps {
   switchActiveBoard: (id: string) => void;
   createBoard: (board: Board) => void;
   deleteBoard: (id: string) => void;
+  editBoard: (board: Board) => void;
   openModal: (modal: ActiveModal) => void;
   closeModal: () => void;
   modal: boolean;
@@ -56,6 +57,12 @@ function AppProvider({ children }: ChildrenProps) {
 
   const createBoard = (board: Board) => {
     setBoards((boards) => [...boards, board]);
+    setActiveBoard(board);
+  };
+
+  const editBoard = (board: Board) => {
+    let newBoards = boards.map((b) => (b.id === board.id ? board : b));
+    setBoards(newBoards);
     setActiveBoard(board);
   };
 
@@ -132,6 +139,7 @@ function AppProvider({ children }: ChildrenProps) {
     switchActiveBoard,
     createBoard,
     deleteBoard,
+    editBoard,
     openModal,
     closeModal,
     modal,

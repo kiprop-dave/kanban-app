@@ -62,16 +62,6 @@ const BoardModal = () => {
     />
   ));
 
-  const addColStyle = {
-    color: "#635FC7",
-    backgroundColor: "#ffffff",
-  };
-
-  const createBoardStyle = {
-    color: "#ffffff",
-    backgroundColor: "#635FC7",
-  };
-
   return (
     <>
       <form

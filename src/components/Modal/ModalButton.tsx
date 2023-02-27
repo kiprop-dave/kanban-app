@@ -2,7 +2,7 @@ import useThemeContext from "../../hooks/useThemeContext";
 
 interface ModalButtonProps {
   text: string;
-  action: (e: React.SyntheticEvent, ...args: any[]) => void;
+  action: (...args: any[]) => void;
   type: "button" | "submit";
   actionType: "add" | "create" | "delete";
 }
