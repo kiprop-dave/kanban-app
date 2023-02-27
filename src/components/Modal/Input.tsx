@@ -6,14 +6,22 @@ interface InputProps {
   index: number;
   editValue: (i: number, v: string) => void;
   deleteElem: (i: number) => void;
+  defaultVal?: string;
 }
 
-function Input({ value, editValue, index, deleteElem }: InputProps) {
+function Input({
+  value,
+  editValue,
+  index,
+  deleteElem,
+  defaultVal,
+}: InputProps) {
   return (
     <div className={S.inputWrapper}>
       <input
         type="text"
         value={value}
+        defaultValue={defaultVal}
         onChange={(e) => editValue(index, e.target.value)}
       />
       <CrossSvg action={deleteElem} index={index} />

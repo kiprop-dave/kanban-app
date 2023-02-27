@@ -7,7 +7,7 @@ import Input from "./Input";
 import ModalButton from "./ModalButton";
 import ModalSelect from "./ModalSelect";
 
-const TaskModal = (): JSX.Element => {
+const CreateTask = (): JSX.Element => {
   const { activeBoard, closeModal, createTask } = useAppContext();
   const [newTask, setNewTask] = useState<Task>({
     id: generateId(),
@@ -143,4 +143,4 @@ const TaskModal = (): JSX.Element => {
   );
 };
 
-export default TaskModal;
+export default CreateTask;

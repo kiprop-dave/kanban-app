@@ -1,8 +1,8 @@
 import S from "./Modal.module.css";
 import useAppContext from "../../hooks/useAppContext";
 import useThemeContext from "../../hooks/useThemeContext";
-import BoardModal from "./BoardModal";
-import TaskModal from "./TaskModal";
+import CreateBoard from "./CreateBoard";
+import CreateTask from "./CreateTask";
 import DeleteModal from "./DeleteModal";
 
 const ModalWrapper = (): JSX.Element => {
@@ -21,10 +21,10 @@ const ModalWrapper = (): JSX.Element => {
 
   switch (activeModal) {
     case "createBoard":
-      modalRendered = <BoardModal />;
+      modalRendered = <CreateBoard />;
       break;
     case "createTask":
-      modalRendered = <TaskModal />;
+      modalRendered = <CreateTask />;
       break;
     case "deleteBoard":
       modalRendered = <DeleteModal target="board" />;

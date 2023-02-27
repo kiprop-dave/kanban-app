@@ -19,7 +19,7 @@ const BoardTask = ({ task }: TaskProps): JSX.Element => {
 
   return (
     <>
-      <div className={`${S.task} ${theme1}`}>
+      <div className={`${S.task} ${theme1}`} draggable>
         <h4 className={`${S.taskTitle}`}>{title}</h4>
         <p className={`${S.par} util`}>{paragraphContent()}</p>
       </div>
