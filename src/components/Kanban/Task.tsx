@@ -8,7 +8,7 @@ type TaskProps = {
   action: (colId: string, taskId: string) => void;
 };
 
-const BoardTask = ({ task }: TaskProps): JSX.Element => {
+const BoardTask = ({ task, colId, action }: TaskProps): JSX.Element => {
   const { theme1 } = useThemeContext();
   const { title, id, subTasks } = task;
 
@@ -19,7 +19,7 @@ const BoardTask = ({ task }: TaskProps): JSX.Element => {
 
   return (
     <>
-      <div className={`${S.task} ${theme1}`} draggable>
+      <div className={`${S.task} ${theme1}`} onClick={() => action(colId, id)}>
         <h4 className={`${S.taskTitle}`}>{title}</h4>
         <p className={`${S.par} util`}>{paragraphContent()}</p>
       </div>

@@ -16,6 +16,7 @@ interface AppContextProps {
   activeTask: Task | null;
   selectActiveTask: (colId: string, taskId: string) => void;
   deleteTask: () => void;
+  updateTask: (task: Task, prevCol?: string) => void;
 }
 
 type ChildrenProps = {
@@ -133,6 +134,41 @@ function AppProvider({ children }: ChildrenProps) {
     }
   };
 
+  const updateTask = (task: Task, previousCol?: string) => {
+    const { column, id } = task;
+    let newBoards = boards.map((board) => {
+      if (board.id === activeBoard?.id) {
+        let newColumns = board.columns.map((col) => {
+          if (previousCol && col.name === previousCol) {
+            return {
+              ...col,
+              tasks: col.tasks.filter((t) => t.id !== id),
+            };
+          }
+          if (previousCol && col.name === column) {
+            return {
+              ...col,
+              tasks: [...col.tasks, task],
+            };
+          }
+          if (col.name === column) {
+            return {
+              ...col,
+              tasks: col.tasks.map((t) => (t.id === id ? task : t)),
+            };
+          }
+          return col;
+        });
+        return { ...board, columns: newColumns };
+      }
+      return board;
+    });
+    setBoards(newBoards);
+    setActiveBoard(
+      newBoards.find((board) => board.id === activeBoard?.id) as Board
+    );
+  };
+
   const values: AppContextProps = {
     boards,
     activeBoard,
@@ -148,6 +184,7 @@ function AppProvider({ children }: ChildrenProps) {
     activeTask,
     selectActiveTask,
     deleteTask,
+    updateTask,
   };
 
   return <AppContext.Provider value={values}>{children}</AppContext.Provider>;

@@ -78,7 +78,7 @@
 }
 
 .col__empty{
-    border: 2px dashed #828fa3;
+    outline: 1px dashed rgba(130,143,163,.4);
 }
 
 .task{
