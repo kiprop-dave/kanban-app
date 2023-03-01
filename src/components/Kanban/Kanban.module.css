@@ -5,8 +5,9 @@
     gap: 1rem;
     padding: 0.5rem 1rem 0.5rem 1rem;
     min-height: calc(100vh - 13vh);
-    min-width: auto;
+    min-width: max-content;
     transition: margin-left 0.3s ease-in-out;
+    overflow-x: scroll;
 }
 
 .hidden{
@@ -50,6 +51,7 @@
 .columnHeader{
     display: flex;
     align-items: center;
+    height: 3rem;
 }
 
 .icon{
@@ -75,6 +77,19 @@
     width: 15.5rem;
     border-radius: 6px;
     min-height: 92%;
+}
+
+.newColumn{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to bottom,rgba(121,132,147,.2),rgba(130,143,163,.1),rgba(130,143,163,0));
+    cursor: pointer;
+    color:#828fa3;
+}
+.newColumn:hover{
+    color:#635FC7;
 }
 
 .col__empty{

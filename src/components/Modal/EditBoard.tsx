@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import S from "./Modal.module.css";
 import { Board } from "../../types/types";
 import generateId from "../../utils/generateId";
@@ -6,12 +6,18 @@ import useAppContext from "../../hooks/useAppContext";
 import Input from "./Input";
 import ModalButton from "./ModalButton";
 
-const EditBoard = (): JSX.Element => {
+type EditBoardProps = {
+  target: "column" | "board";
+};
+
+const EditBoard = ({ target }: EditBoardProps): JSX.Element => {
   const { activeBoard, editBoard, closeModal } = useAppContext();
   const boardCopy = JSON.parse(JSON.stringify(activeBoard)) as Board;
   const [currentBoard, setCurrentBoard] = useState(
     boardCopy || { name: "", id: "", columns: [] }
   );
+
+  const disabled = target === "column" ? true : false;
 
   const editName = (val: string) => {
     setCurrentBoard((prev) => ({ ...prev, name: val }));
@@ -27,6 +33,7 @@ const EditBoard = (): JSX.Element => {
   };
 
   const deleteColumn = (index: number) => {
+    if (target === "column") return; // disable delete column if editing column (not board)
     if (currentBoard.columns.length === 1) return;
     setCurrentBoard((prev) => ({
       ...prev,
@@ -67,6 +74,7 @@ const EditBoard = (): JSX.Element => {
           type="text"
           defaultValue={activeBoard?.name}
           onChange={(e) => editName(e.target.value)}
+          disabled={disabled}
         />
         <label htmlFor="columns">Columns</label>
         <div className={S.columnsContainer}>{colElems}</div>

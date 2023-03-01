@@ -23,6 +23,7 @@ function Input({
         value={value}
         defaultValue={defaultVal}
         onChange={(e) => editValue(index, e.target.value)}
+        autoFocus
       />
       <CrossSvg action={deleteElem} index={index} />
     </div>

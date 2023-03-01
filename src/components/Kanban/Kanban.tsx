@@ -2,6 +2,7 @@ import S from "./Kanban.module.css";
 import useAppContext from "../../hooks/useAppContext";
 import useThemeContext from "../../hooks/useThemeContext";
 import BoardColumn from "./Column";
+import NewColumn from "./NewColumn";
 
 type KanbanProps = {
   showSideBar: boolean;
@@ -21,7 +22,10 @@ const Kanban = ({ showSideBar }: KanbanProps): JSX.Element => {
     <>
       <section className={`${S.container} ${theme2} ${toggleClass}`}>
         {activeBoard ? (
-          columns
+          <>
+            {columns}
+            <NewColumn />
+          </>
         ) : (
           <div className={`${S.noBoard}`}>
             <p className={`${S.noBoardText}`}>

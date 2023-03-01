@@ -32,7 +32,10 @@ const ModalWrapper = (): JSX.Element => {
       modalRendered = <DeleteModal target="board" />;
       break;
     case "editBoard":
-      modalRendered = <EditBoard />;
+      modalRendered = <EditBoard target="board" />;
+      break;
+    case "createColumn":
+      modalRendered = <EditBoard target="column" />;
       break;
     case "viewTask":
       modalRendered = <TaskDetails />;
