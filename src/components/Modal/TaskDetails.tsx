@@ -2,15 +2,27 @@ import { useState } from "react";
 import { Task } from "../../types/types";
 import S from "./Modal.module.css";
 import useAppContext from "../../hooks/useAppContext";
+import useThemeContext from "../../hooks/useThemeContext";
 import SubTask from "./SubTask";
 import ModalSelect from "./ModalSelect";
+import DropButton from "../DropButton";
+import DropMenu from "../DropMenu";
 
 const TaskDetails = (): JSX.Element => {
-  const { closeModal, activeTask, activeBoard, updateTask } = useAppContext();
+  const { closeModal, activeTask, activeBoard, updateTask, openModal } =
+    useAppContext();
   let taskCopy = JSON.parse(JSON.stringify(activeTask)) as Task;
   const columns = activeBoard?.columns.map((col) => col.name) ?? [];
   const [currentTask, setCurrentTask] = useState<Task>(taskCopy);
-  const { id, title, description, subTasks } = currentTask;
+  const { title, description, subTasks } = currentTask;
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const { theme2 } = useThemeContext();
+
+  // const handleCloseMenu = (evt: React.SyntheticEvent) => {
+  //   if (evt.target === evt.currentTarget) {
+  //     setIsMenuOpen(false);
+  //   }
+  // };
 
   const subTask = (): string => {
     let completed = subTasks.filter((subTask) => subTask.completed).length;
@@ -49,7 +61,18 @@ const TaskDetails = (): JSX.Element => {
 
   return (
     <>
-      <h4 className={S.title}>{title}</h4>
+      <div className={S.titleContainer}>
+        <h4 className={S.title}>{title}</h4>
+        <DropButton action={() => setIsMenuOpen((prev) => !prev)} />
+        {isMenuOpen && (
+          <DropMenu
+            theme={theme2}
+            name="Task"
+            editAction={() => openModal("editTask")}
+            deleteAction={() => openModal("deleteTask")}
+          />
+        )}
+      </div>
       <p className={`${S.par} util`}>
         {description.length > 0 ? description : "No description"}
       </p>

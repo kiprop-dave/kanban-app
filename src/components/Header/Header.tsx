@@ -2,7 +2,8 @@ import { useState } from "react";
 import S from "./Header.module.css";
 import useThemeContext from "../../hooks/useThemeContext";
 import useAppContext from "../../hooks/useAppContext";
-import MenuPopUp from "./Menu";
+import DropButton from "../DropButton";
+import DropMenu from "../DropMenu";
 
 type HeaderProps = {};
 
@@ -35,23 +36,18 @@ function Header(): JSX.Element {
           <button className={S.newTask} onClick={() => openModal("createTask")}>
             + Add New Task
           </button>
-          <button
-            className={S.menuBtn}
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            <span className={S.hamburger}></span>
-            <span className={S.hamburger}></span>
-            <span className={S.hamburger}></span>
-          </button>
+          <div className={S.menuBtn}>
+            <DropButton action={() => setIsMenuOpen(!isMenuOpen)} />
+            {isMenuOpen && (
+              <DropMenu
+                theme={theme2}
+                name="Board"
+                editAction={openEditBoardModal}
+                deleteAction={openDeleteModal}
+              />
+            )}
+          </div>
         </div>
-      )}
-      {isMenuOpen && (
-        <MenuPopUp
-          theme={theme2}
-          name="Board"
-          editModal={openEditBoardModal}
-          deleteModal={openDeleteModal}
-        />
       )}
     </header>
   );

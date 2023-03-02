@@ -55,50 +55,7 @@
 }
 
 .menuBtn{
-    all: unset;
-    height: 35%;
-    width: 10%;
-    cursor: pointer;
-    border-radius: 20px;
-    font-size: 14px;
-    font-weight: 600;
-    background-color: inherit;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly
-}
-
-.hamburger{
-    display: block;
-    width:4px;
-    height: 4px;
-    border-radius: 50%;
-    background-color: #635FC7;
-}
-
-.menuContainer{
-    position:fixed;
-    top:11vh;
-    right: 2.5rem;
-    border-radius: 5px;
-    box-shadow: 0 0 8px #364e7e1a;
-    display: flex;
-    flex-direction: column;
-    padding: 0.5rem 1.5rem 0.5rem 1.5rem;
-}
-
-.menuButtons{
-    all: unset;
-    cursor: pointer;
-    height: 2rem;
-    font-size: 14px;
-}
-
-.editBtn{
-    color:#828fa3;
-}
-
-.deleteBtn{
-    color:#ea3838;
+    position: relative;
+    height: 50%;
+    width:10%;
 }
