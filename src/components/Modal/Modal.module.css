@@ -137,6 +137,11 @@ label{
 }
 
 /* Task Details style */
+.titleContainer{
+    position: relative;
+    height: 2.2rem;
+}
+
 .par{
     font-size: 12px;
     margin: 0.5rem 0;

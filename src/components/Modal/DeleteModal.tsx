@@ -13,6 +13,8 @@ const DeleteModal = ({ target }: DeleteProps) => {
   const handleDelete = () => {
     if (activeBoard && target === "board") {
       deleteBoard(activeBoard.id);
+    } else if (activeTask && target === "task") {
+      deleteTask();
     }
     closeModal();
   };

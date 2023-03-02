@@ -40,6 +40,9 @@ const ModalWrapper = (): JSX.Element => {
     case "viewTask":
       modalRendered = <TaskDetails />;
       break;
+    case "deleteTask":
+      modalRendered = <DeleteModal target="task" />;
+      break;
     default:
       modalRendered = <></>;
   }
