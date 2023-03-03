@@ -93,7 +93,7 @@
 }
 
 .col__empty{
-    outline: 1px dashed rgba(130,143,163,.4);
+    outline: 2px dashed rgba(130,143,163,.4);
 }
 
 .task{

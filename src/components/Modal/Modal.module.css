@@ -9,6 +9,9 @@ input,textarea{
     padding: 0.2rem 0.5rem;
     font-size: 12px;
 }
+input:disabled{
+    color: #828fa3;
+}
 
 form{
     display: flex;
@@ -44,7 +47,7 @@ label{
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
     background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
@@ -56,6 +59,13 @@ label{
     border-radius: 10px;
     padding: 1.5rem 1.5rem 1.5rem 1.5rem;
     width: 30%;
+    margin-bottom: 2rem;
+    overflow-y: scroll;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-height: max-content;
 }
 
 .error{

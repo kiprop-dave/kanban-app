@@ -6,6 +6,7 @@ import CreateTask from "./CreateTask";
 import DeleteModal from "./DeleteModal";
 import EditBoard from "./EditBoard";
 import TaskDetails from "./TaskDetails";
+import EditTask from "./EditTask";
 
 const ModalWrapper = (): JSX.Element => {
   const { activeModal, closeModal } = useAppContext();
@@ -42,6 +43,9 @@ const ModalWrapper = (): JSX.Element => {
       break;
     case "deleteTask":
       modalRendered = <DeleteModal target="task" />;
+      break;
+    case "editTask":
+      modalRendered = <EditTask />;
       break;
     default:
       modalRendered = <></>;

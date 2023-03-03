@@ -59,7 +59,6 @@ const EditBoard = ({ target }: EditBoardProps): JSX.Element => {
       key={i}
       value={col.name}
       index={i}
-      defaultVal={col.name}
       editValue={editColumn}
       deleteElem={deleteColumn}
     />
