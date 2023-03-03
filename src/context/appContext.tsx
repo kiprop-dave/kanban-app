@@ -26,7 +26,7 @@ type ChildrenProps = {
 const AppContext = createContext<AppContextProps | null>(null);
 
 function AppProvider({ children }: ChildrenProps) {
-  const [boards, setBoards] = useState<Board[]>([]);
+  const [boards, setBoards] = useState<Board[]>(() => getLocalStorage());
   const [activeBoard, setActiveBoard] = useState<Board | null>(null);
   const [modal, setModal] = useState<boolean>(false);
   const [activeModal, setActiveModal] = useState<ActiveModal>("none");
@@ -38,12 +38,15 @@ function AppProvider({ children }: ChildrenProps) {
     }
   }, []);
 
-  useEffect(() => {
+  function getLocalStorage(): Board[] {
     const boards = localStorage.getItem("kanban_boards");
     if (boards) {
-      setBoards(JSON.parse(boards));
+      // TODO: Run type check here
+      const existingBoards = JSON.parse(boards) as Board[];
+      return existingBoards;
     }
-  }, []);
+    return [];
+  }
 
   useEffect(() => {
     localStorage.setItem("kanban_boards", JSON.stringify(boards));
