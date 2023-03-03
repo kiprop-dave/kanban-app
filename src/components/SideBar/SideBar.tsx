@@ -18,6 +18,8 @@ const SideBar = ({ showSideBar, openSideBar, closeSideBar }: SideBarProps) => {
   let toggleClass = isLightTheme ? S.right : S.left;
   let slideTransition = showSideBar ? S.slideIn : S.slideOut;
 
+  let dynamicBorder = isLightTheme ? S.lightBorder_right : S.darkBorder_right;
+
   const boardElements = boards.map((board) => (
     <BoardName
       key={board.id}
@@ -30,7 +32,7 @@ const SideBar = ({ showSideBar, openSideBar, closeSideBar }: SideBarProps) => {
 
   return (
     <>
-      <nav className={`${theme1} ${slideTransition}`}>
+      <nav className={`${theme1} ${slideTransition} ${dynamicBorder}`}>
         <h4 className={S.title}>ALL BOARDS ({boards.length})</h4>
         <ul className={S.boardList}>{boardElements}</ul>
         <BoardName name="+ Create New Board" openModal={openModal} />

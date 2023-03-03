@@ -8,9 +8,14 @@ import DropMenu from "../DropMenu";
 type HeaderProps = {};
 
 function Header(): JSX.Element {
-  const { theme1, theme2 } = useThemeContext();
+  const { theme1, theme2, isLightTheme } = useThemeContext();
   const { activeBoard, openModal } = useAppContext();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  let dynamicBorder = {
+    bottom: isLightTheme ? S.lightBorder_bottom : S.darkBorder_bottom,
+    right: isLightTheme ? S.lightBorder_right : S.darkBorder_right,
+  };
 
   const openDeleteModal = () => {
     openModal("deleteBoard");
@@ -21,8 +26,8 @@ function Header(): JSX.Element {
   };
 
   return (
-    <header className={`${S.container} ${theme1}`}>
-      <div className={S.logo}>
+    <header className={`${S.container} ${theme1} ${dynamicBorder.bottom}`}>
+      <div className={`${S.logo} ${dynamicBorder.right}`}>
         <img src="/kanban-icon.svg" alt="app-logo" />
         <h1 className={S.appLogo}>kanban</h1>
       </div>

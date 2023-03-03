@@ -163,3 +163,12 @@ li{
 .createBoard{
    color: #635fc7;
 }
+
+/* Dynamic border style */
+.lightBorder_right{
+    border-right: 1px solid #e4ebfa;
+}
+
+.darkBorder_right{
+    border-right: 1px solid #3e3f4e;
+}
