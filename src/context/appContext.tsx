@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useRef } from "react";
 import { Board, ActiveModal, Task } from "../types/types";
 
 interface AppContextProps {
@@ -17,6 +17,9 @@ interface AppContextProps {
   selectActiveTask: (colId: string, taskId: string) => void;
   deleteTask: () => void;
   updateTask: (task: Task, prevCol?: string) => void;
+  dragStart: (task: Task) => void;
+  dragEnter: (col: string) => void;
+  dragEnd: () => void;
 }
 
 type ChildrenProps = {
@@ -172,6 +175,55 @@ function AppProvider({ children }: ChildrenProps) {
     );
   };
 
+  // TODO:Create drag and drop feature
+  const dragItem = useRef<Task | null>(null);
+  const dragOverItem = useRef<string | null>(null);
+
+  const dragStart = (task: Task) => {
+    const _task = JSON.parse(JSON.stringify(task)) as Task;
+    dragItem.current = _task;
+  };
+
+  const dragEnter = (column: string) => {
+    dragOverItem.current = column;
+  };
+
+  const dragEnd = () => {
+    if (!dragItem.current || !dragOverItem.current) return;
+    const drag = dragItem.current;
+    const over = dragOverItem.current;
+    if (drag.column === over) {
+      dragItem.current = null;
+      dragOverItem.current = null;
+      return;
+    } else {
+      let newBoards = boards.map((brd) => {
+        if (brd.id === activeBoard?.id) {
+          let newColumns = brd.columns.map((col) => {
+            if (col.name === drag.column) {
+              return {
+                ...col,
+                tasks: col.tasks.filter((tsk) => tsk.id !== drag.id),
+              };
+            } else if (col.name === over) {
+              return { ...col, tasks: [...col.tasks, drag] };
+            }
+            return col;
+          });
+          return { ...brd, columns: newColumns };
+        }
+        return brd;
+      });
+      drag.column = over;
+      setBoards(newBoards);
+      setActiveBoard(
+        newBoards.find((board) => board.id === activeBoard?.id) as Board
+      );
+      dragItem.current = null;
+      dragOverItem.current = null;
+    }
+  };
+
   const values: AppContextProps = {
     boards,
     activeBoard,
@@ -188,6 +240,9 @@ function AppProvider({ children }: ChildrenProps) {
     selectActiveTask,
     deleteTask,
     updateTask,
+    dragStart,
+    dragEnter,
+    dragEnd,
   };
 
   return <AppContext.Provider value={values}>{children}</AppContext.Provider>;
