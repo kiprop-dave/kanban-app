@@ -109,8 +109,8 @@ li{
 }
 
 .toggleButton{
-    height: 50%;
-    width: 20%;
+    height: 40%;
+    width: 18%;
     border-radius: 12px;
     border: none;
     background-color: #635FC7;
@@ -123,8 +123,8 @@ li{
 
 .toggleButton__slider{
     display: block;
-    height: 1.2rem;
-    width: 1.2rem;
+    height: 1rem;
+    width: 1rem;
     margin: 1px 1.5px;
     border-radius: 50%;
     background-color: #fff;
