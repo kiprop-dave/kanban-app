@@ -6,19 +6,22 @@ interface InputProps {
   index: number;
   editValue: (i: number, v: string) => void;
   deleteElem: (i: number) => void;
+  disabled?: boolean;
 }
 
-function Input({ value, editValue, index, deleteElem }: InputProps) {
+function Input({ value, editValue, index, deleteElem, disabled }: InputProps) {
   return (
     <div className={S.inputWrapper}>
       <input
         type="text"
         value={value}
-        // defaultValue={defaultVal}
+        disabled={disabled}
         onChange={(e) => editValue(index, e.target.value)}
         autoFocus
       />
-      <CrossSvg action={deleteElem} index={index} />
+      <span className={S.crossIcon} onClick={() => deleteElem(index)}>
+        <CrossSvg />
+      </span>
     </div>
   );
 }

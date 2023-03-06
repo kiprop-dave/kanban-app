@@ -103,6 +103,12 @@
     border-radius: 6px;
     box-shadow: 0 4px 6px #364e7e1a;
     cursor: grab;
+    transition: opacity 0.2s ease;
+}
+.task:hover{
+    box-shadow: 0 4px 6px #364e7e1a;
+    border: 1px solid rgba(134,134,134,.2);
+    opacity: 0.4;
 }
 
 .taskTitle{

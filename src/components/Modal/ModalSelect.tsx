@@ -2,6 +2,7 @@ import { useState } from "react";
 import S from "./Modal.module.css";
 import { SelectColumn } from "../../types/types";
 import useThemeContext from "../../hooks/useThemeContext";
+import DropSvg from "../DropSvg";
 
 interface SelectProps {
   options: SelectColumn[] | string[];
@@ -12,6 +13,8 @@ interface SelectProps {
 function ModalSelect({ options, selected, setSelected }: SelectProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const { theme2 } = useThemeContext();
+
+  const rotate = isOpen ? S.rotate : "";
 
   const selectItem = (id: string | SelectColumn) => {
     if (typeof id === "object") id = id.id;
@@ -29,6 +32,9 @@ function ModalSelect({ options, selected, setSelected }: SelectProps) {
     <>
       <div className={S.select} onClick={() => setIsOpen((p) => !p)}>
         <span>{typeof selected === "object" ? selected.name : selected}</span>
+        <span className={`${S.openMenu} ${rotate}`}>
+          <DropSvg />
+        </span>
       </div>
       <div className={`${S.dropContainer}`}>
         {isOpen && (

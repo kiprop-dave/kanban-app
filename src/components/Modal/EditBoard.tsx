@@ -61,6 +61,7 @@ const EditBoard = ({ target }: EditBoardProps): JSX.Element => {
       index={i}
       editValue={editColumn}
       deleteElem={deleteColumn}
+      disabled={disabled && i !== currentBoard.columns.length - 1}
     />
   ));
 

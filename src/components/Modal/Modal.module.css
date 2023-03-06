@@ -13,6 +13,13 @@ input:disabled{
     color: #828fa3;
 }
 
+input:focus{
+    outline: solid 2px #635FC7;
+}
+textarea:focus{
+    outline: solid 2px #635FC7;
+}
+
 form{
     display: flex;
     flex-direction: column;
@@ -82,8 +89,10 @@ label{
 .inputWrapper > input{
     min-width: 88%;
 }
-.inputWrapper > svg{
+.crossIcon{
     cursor: pointer;
+    font-size: 16px;
+    color: #828fa3;
 }
 
 .description{
@@ -100,8 +109,23 @@ label{
     padding: 0 0.5rem;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     cursor: pointer;
     font-size: 12px;
+}
+.select:focus{
+    outline: solid 2px #635FC7;
+}
+
+.openMenu{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.rotate{
+    transform: rotate(180deg);
 }
 
 .dropContainer{
