@@ -204,3 +204,10 @@ label{
     cursor: pointer;
     border-radius: 2px;
 }
+
+@media screen and (max-width: 768px) {
+    .container{
+        height: 90%;
+        width: 100%;
+    }
+}

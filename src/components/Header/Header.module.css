@@ -48,9 +48,18 @@
     text-align: center;
     color: #ffff;
     padding: 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .newTask:hover{
     opacity: 0.8;
+}
+
+.plusText{
+    margin-right: 5px;
+    font-size: 1.2rem;
+    text-align: center;
 }
 
 .menuBtn{
@@ -73,4 +82,25 @@
 
 .darkBorder_right{
     border-right: 1px solid #3e3f4e;
+}
+
+@media screen and (max-width: 768px) {
+    .appLogo{
+        display: none;
+    }
+
+    .newTask{
+        width:2rem;
+        height: 1.5rem;
+    }
+
+    .plusText{
+        margin-right: 0;
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .newTaskText{
+        display: none;
+    }
 }

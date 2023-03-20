@@ -32,14 +32,13 @@ function Header(): JSX.Element {
         <h1 className={S.appLogo}>kanban</h1>
       </div>
       <div className={S.boardTitleCont}>
-        <h2 className={S.boardName}>
-          {activeBoard?.name ? activeBoard.name : "No Board Found"}
-        </h2>
+        <h2 className={S.boardName}>{activeBoard?.name ? activeBoard.name : "No Board Found"}</h2>
       </div>
       {activeBoard && (
         <div className={S.buttonsContainer}>
           <button className={S.newTask} onClick={() => openModal("createTask")}>
-            + Add New Task
+            <p className={S.plusText}>+</p>
+            <span className={S.newTaskText}>New Task</span>
           </button>
           <div className={S.menuBtn}>
             <DropButton action={() => setIsMenuOpen(!isMenuOpen)} />
