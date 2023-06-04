@@ -4,6 +4,8 @@ import useThemeContext from "../../hooks/useThemeContext";
 import useAppContext from "../../hooks/useAppContext";
 import DropButton from "../DropButton";
 import DropMenu from "../DropMenu";
+import DropSvg from "../DropSvg";
+import SideBar from "../SideBar/SideBar";
 
 type HeaderProps = {};
 
@@ -11,6 +13,7 @@ function Header(): JSX.Element {
   const { theme1, theme2, isLightTheme } = useThemeContext();
   const { activeBoard, openModal } = useAppContext();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSideBarOpen, setIsSideBarOpen] = useState(false); // side bar for small screens
 
   let dynamicBorder = {
     bottom: isLightTheme ? S.lightBorder_bottom : S.darkBorder_bottom,
@@ -25,6 +28,19 @@ function Header(): JSX.Element {
     openModal("editBoard");
   };
 
+  const toggleSideBar = () => {
+    setIsSideBarOpen(!isSideBarOpen);
+  };
+
+  const openSideBar = () => {
+    setIsSideBarOpen(true);
+  };
+
+  const closeSideBar = (evt: React.MouseEvent<HTMLDivElement>) => {
+    if (evt.target !== evt.currentTarget) return;
+    setIsSideBarOpen(false);
+  };
+
   return (
     <header className={`${S.container} ${theme1} ${dynamicBorder.bottom}`}>
       <div className={`${S.logo} ${dynamicBorder.right}`}>
@@ -33,6 +49,9 @@ function Header(): JSX.Element {
       </div>
       <div className={S.boardTitleCont}>
         <h2 className={S.boardName}>{activeBoard?.name ? activeBoard.name : "No Board Found"}</h2>
+        <span className={`${S.dropsmall} ${isSideBarOpen && S.rotate}`} onClick={toggleSideBar}>
+          <DropSvg />
+        </span>
       </div>
       {activeBoard && (
         <div className={S.buttonsContainer}>
@@ -50,6 +69,17 @@ function Header(): JSX.Element {
                 deleteAction={openDeleteModal}
               />
             )}
+          </div>
+        </div>
+      )}
+      {isSideBarOpen && (
+        <div className={`${S.sidebar_modal_container}`} onClick={(e) => closeSideBar(e)}>
+          <div className={`${S.sidebar_container}`}>
+            <SideBar
+              showSideBar={isSideBarOpen}
+              openSideBar={openSideBar}
+              closeSideBar={closeSideBar}
+            />
           </div>
         </div>
       )}

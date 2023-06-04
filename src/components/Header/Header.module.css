@@ -1,106 +1,168 @@
-.container{
-    height: 13vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    position: fixed;
-    top: 0;
+.container {
+  height: 13vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  left: 0;
 }
 
-.logo{
-    height: 100%;
-    width: 20%;
-    border-right: 1px solid #3e3f4e;
-    display: flex;
-    align-items: center;
-    padding-left: 2rem;
+.logo {
+  height: 100%;
+  width: 20%;
+  border-right: 1px solid #3e3f4e;
+  display: flex;
+  align-items: center;
+  padding-left: 2rem;
 }
 
-.appLogo{
-    margin-left: 1rem;
+.appLogo {
+  margin-left: 1rem;
 }
 
-.boardTitleCont{
-    height: 100%;
-    width: 65%;
-    display: flex;
-    align-items: center;
-    padding: 0 0 0 2rem;
+.boardTitleCont {
+  height: 100%;
+  width: 65%;
+  display: flex;
+  align-items: center;
+  padding: 0 0 0 2rem;
 }
 
-.buttonsContainer{  
-    height: 100%;
-    width: 15%;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
+.dropsmall {
+  display: none;
 }
 
-.newTask{
-    all: unset;
-    height: 45%;
-    width: 60%;
-    cursor: pointer;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 600;
-    background-color: #635FC7;
-    text-align: center;
-    color: #ffff;
-    padding: 0 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.newTask:hover{
-    opacity: 0.8;
+.buttonsContainer {
+  height: 100%;
+  width: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
-.plusText{
-    margin-right: 5px;
-    font-size: 1.2rem;
-    text-align: center;
+.newTask {
+  all: unset;
+  height: 45%;
+  width: 60%;
+  cursor: pointer;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  background-color: #635fc7;
+  text-align: center;
+  color: #ffff;
+  padding: 0 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.newTask:hover {
+  opacity: 0.8;
 }
 
-.menuBtn{
-    position: relative;
-    height: 50%;
-    width:10%;
+.plusText {
+  margin-right: 5px;
+  font-size: 1.2rem;
+  text-align: center;
 }
 
-.lightBorder_bottom{
-    border-bottom: 1px solid #e4ebfa;
+.menuBtn {
+  position: relative;
+  height: 50%;
+  width: 10%;
 }
 
-.darkBorder_bottom{
-    border-bottom: 1px solid #3e3f4e;
+.lightBorder_bottom {
+  border-bottom: 1px solid #e4ebfa;
 }
 
-.lightBorder_right{
-    border-right: 1px solid #e4ebfa;
+.darkBorder_bottom {
+  border-bottom: 1px solid #3e3f4e;
 }
 
-.darkBorder_right{
-    border-right: 1px solid #3e3f4e;
+.lightBorder_right {
+  border-right: 1px solid #e4ebfa;
+}
+
+.darkBorder_right {
+  border-right: 1px solid #3e3f4e;
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+.sidebar_modal_container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar_container {
+  position: relative;
+  min-height: 35vh;
+  width: 70vw;
+  margin-top: 8vh;
 }
 
 @media screen and (max-width: 768px) {
-    .appLogo{
-        display: none;
-    }
+  .container {
+    height: 10vh;
+    position: sticky;
+    top: 0;
+  }
+  .logo {
+    width: auto;
+    border-right: none;
+    padding-left: 1rem;
+  }
+  .appLogo {
+    display: none;
+  }
 
-    .newTask{
-        width:2rem;
-        height: 1.5rem;
-    }
+  .boardTitleCont {
+    padding: 0 1rem;
+    width: max-content;
+  }
 
-    .plusText{
-        margin-right: 0;
-        font-size: 1.5rem;
-        text-align: center;
-    }
+  .dropsmall {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease-in-out;
+    height: 1rem;
+    padding-left: 0.5rem;
+    cursor: pointer;
+    /* border: solid 1px red; */
+  }
 
-    .newTaskText{
-        display: none;
-    }
+  .buttonsContainer {
+    margin-left: auto;
+    margin-right: 1rem;
+    width: 17%;
+    justify-content: space-between;
+  }
+
+  .newTask {
+    width: 2rem;
+    height: 1.5rem;
+  }
+
+  .plusText {
+    margin-right: 0;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .newTaskText {
+    display: none;
+  }
 }

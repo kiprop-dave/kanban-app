@@ -8,7 +8,7 @@ import S from "./SideBar.module.css";
 type SideBarProps = {
   showSideBar: boolean;
   openSideBar: () => void;
-  closeSideBar: () => void;
+  closeSideBar: (...args: any[]) => void;
 };
 
 const SideBar = ({ showSideBar, openSideBar, closeSideBar }: SideBarProps) => {
@@ -16,9 +16,6 @@ const SideBar = ({ showSideBar, openSideBar, closeSideBar }: SideBarProps) => {
   const { theme1, theme2, isLightTheme, toggleTheme } = useThemeContext();
 
   let toggleClass = isLightTheme ? S.right : S.left;
-  let slideTransition = showSideBar ? S.slideIn : S.slideOut;
-
-  let dynamicBorder = isLightTheme ? S.lightBorder_right : S.darkBorder_right;
 
   const boardElements = boards.map((board) => (
     <BoardName
@@ -32,7 +29,7 @@ const SideBar = ({ showSideBar, openSideBar, closeSideBar }: SideBarProps) => {
 
   return (
     <>
-      <nav className={`${theme1} ${slideTransition} ${dynamicBorder}`}>
+      <nav className={`${theme1}`}>
         <h4 className={S.title}>ALL BOARDS ({boards.length})</h4>
         <ul className={S.boardList}>{boardElements}</ul>
         <BoardName name="+ Create New Board" openModal={openModal} />
@@ -44,13 +41,8 @@ const SideBar = ({ showSideBar, openSideBar, closeSideBar }: SideBarProps) => {
                 fill="currentColor"
               ></path>
             </svg>
-            <button
-              className={`${S.toggleButton}`}
-              onClick={() => toggleTheme()}
-            >
-              <span
-                className={`${S.toggleButton__slider} ${toggleClass}`}
-              ></span>
+            <button className={`${S.toggleButton}`} onClick={() => toggleTheme()}>
+              <span className={`${S.toggleButton__slider} ${toggleClass}`}></span>
             </button>
             <svg width="19" height="19" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -59,10 +51,7 @@ const SideBar = ({ showSideBar, openSideBar, closeSideBar }: SideBarProps) => {
               ></path>
             </svg>
           </div>
-          <button
-            className={`${S.sidebarToggle}`}
-            onClick={() => closeSideBar()}
-          >
+          <button className={`${S.sidebarToggle}`} onClick={() => closeSideBar()}>
             <EyeSvg />
             <span style={{ marginLeft: "0.5rem" }}>Hide Sidebar</span>
           </button>

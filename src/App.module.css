@@ -1,1 +1,67 @@
+.app {
+  width: 100vw;
+  height: 100vh;
+  overflow: scroll;
+}
 
+.fixed_side {
+  position: fixed;
+  left: 0;
+  top: 13vh;
+  width: 20%;
+  height: calc(100vh - 13vh);
+  display: flex;
+  flex-direction: column;
+  border-right: solid 1px #3e3f4e;
+  transition: left 0.3s ease-in-out;
+  z-index: 5;
+}
+
+.slideOut {
+  left: -20%;
+  animation: slideOut 0.3s ease-in-out forwards;
+}
+
+.slideIn {
+  left: 0;
+  animation: slideIn 0.3s ease-in-out forwards;
+}
+
+@keyframes slideIn {
+  from {
+    left: -20%;
+  }
+
+  to {
+    left: 0;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    left: 0;
+  }
+
+  to {
+    left: -20%;
+  }
+}
+
+.lightBorder_right {
+  border-right: 1px solid #e4ebfa;
+}
+
+.darkBorder_right {
+  border-right: 1px solid #3e3f4e;
+}
+
+.sidebar_container {
+  position: relative;
+  height: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .fixed_side {
+    display: none;
+  }
+}
