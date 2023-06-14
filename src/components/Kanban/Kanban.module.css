@@ -130,4 +130,7 @@
     margin-left: 0;
     margin-top: 0;
   }
+  .tasksContainer {
+    width: 20rem;
+  }
 }

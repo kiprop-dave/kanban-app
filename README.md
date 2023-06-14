@@ -21,7 +21,7 @@ This is my solution to the Kanban Task Manager challenge on frontend mentor.
 
 Users should be able to:
 
-- View the optimal layout for the app depending on their device's screen size ❌
+- View the optimal layout for the app depending on their device's screen size ✅
 - See hover states for all interactive elements on the page ✅
 - Create, read, update, and delete boards and tasks ✅
 - Receive form validations when trying to create/edit boards and tasks ❌
@@ -56,6 +56,9 @@ Users should be able to:
 - TypeScript
 
 ### What I learned
+
+- This was the most complex UI I have ever built and managing css files is quite hard.
+- I now understand why people use frameworks like tailwind.
 
 ### Deployment
 

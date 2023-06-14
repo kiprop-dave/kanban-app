@@ -148,6 +148,12 @@ li {
   }
 
   .toggleButton {
+    height: 2rem;
+    border-radius: 15px;
+  }
+
+  .toggleButton__slider {
     height: 1.5rem;
+    width: 1.5rem;
   }
 }
